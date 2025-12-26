@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #f5f7fa;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.timeserver.ui.MainController">
+
+    <!-- Верхняя панель управления -->
+    <top>
+        <VBox spacing="12" alignment="CENTER" style="-fx-background-color: #ffffff; -fx-padding: 15; -fx-border-color: #e0e0e0; -fx-border-width: 0 0 1 0;">
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Панель управления сервером времени"/>
+
+            <HBox spacing="15" alignment="CENTER">
+                <Button fx:id="startButton" text="Старт сервера"
+                        style="-fx-background-color: #ffffff; -fx-text-fill: #333; -fx-border-color: #cccccc; -fx-border-width: 1; -fx-padding: 8 20; -fx-background-radius: 8;"/>
+                <Button fx:id="stopButton" text="Стоп сервера"
+                        style="-fx-background-color: #ffffff; -fx-text-fill: #333; -fx-border-color: #cccccc; -fx-border-width: 1; -fx-padding: 8 20; -fx-background-radius: 8;"/>
+                <Button fx:id="resetButton" text="Сброс времени"
+                        style="-fx-background-color: #ffffff; -fx-text-fill: #333; -fx-border-color: #cccccc; -fx-border-width: 1; -fx-padding: 8 20; -fx-background-radius: 8;"/>
+                <!-- УДАЛЕНА НАДПИСЬ serverStatusLabel -->
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Основная часть: 3 компонента в ряд -->
+    <center>
+        <GridPane hgap="20" vgap="20" style="-fx-padding: 30;" alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="33"/>
+                <ColumnConstraints percentWidth="33"/>
+                <ColumnConstraints percentWidth="33"/>
+            </columnConstraints>
+
+            <!-- Компонент 1: Отчёт времени -->
+            <VBox fx:id="component1Panel" spacing="15" alignment="CENTER"
+                  style="-fx-background-color: #ffffff; -fx-padding: 25; -fx-background-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1;"
+                  GridPane.columnIndex="0">
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Компонент 1: Отчёт времени"/>
+                <Label fx:id="timeDisplayLabel" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #1976D2;" text="Прошло: 0 с"/>
+            </VBox>
+
+            <!-- Компонент 2: Будильник -->
+            <VBox fx:id="component2Panel" spacing="15" alignment="CENTER"
+                  style="-fx-background-color: #ffffff; -fx-padding: 25; -fx-background-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1;"
+                  GridPane.columnIndex="1">
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Компонент 2: Будильник"/>
+                <VBox spacing="10" alignment="CENTER">
+                    <Button fx:id="playMusicButton" text="Включить будильник"
+                            style="-fx-background-color: #ffffff; -fx-text-fill: #333; -fx-border-color: #cccccc; -fx-border-width: 1; -fx-padding: 8 16; -fx-background-radius: 8;"/>
+                    <Slider fx:id="musicIntervalSlider" min="2" max="20" value="5" showTickLabels="true" showTickMarks="true" majorTickUnit="5"/>
+                    <Label fx:id="musicIntervalLabel" text="Интервал: 5 сек"/>
+                </VBox>
+            </VBox>
+
+            <!-- Компонент 3: Анимация (мигание) — теперь ГОЛУБОЙ -->
+            <VBox fx:id="component4Panel" spacing="15" alignment="CENTER"
+                  style="-fx-background-color: #ffffff; -fx-padding: 25; -fx-background-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1;"
+                  GridPane.columnIndex="2">
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Компонент 3: Анимация"/>
+                <Pane fx:id="blinkPane" prefHeight="180" prefWidth="180" style="-fx-background-color: #E3F2FD; -fx-background-radius: 12; -fx-border-color: #42A5F5; -fx-border-width: 2;"/>
+                <VBox spacing="10" alignment="CENTER">
+                    <Button fx:id="blinkButton" text="Включить анимацию"
+                            style="-fx-background-color: #ffffff; -fx-text-fill: #333; -fx-border-color: #cccccc; -fx-border-width: 1; -fx-padding: 8 16; -fx-background-radius: 8;"/>
+                    <Slider fx:id="blinkConditionSlider" min="3" max="15" value="7" showTickLabels="true" showTickMarks="true" majorTickUnit="3"/>
+                    <Label fx:id="blinkConditionLabel" text="Условие: каждые 7 сек"/>
+                </VBox>
+            </VBox>
+        </GridPane>
+    </center>
+
+    <!-- Нижняя статусная строка -->
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #eef2f6; -fx-padding: 12;">
+            <Label fx:id="statusBarLabel" style="-fx-font-size: 14px; -fx-text-fill: #555555;" text="Готов к работе"/>
+        </HBox>
+    </bottom>
+</BorderPane>
