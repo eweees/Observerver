@@ -34,6 +34,7 @@ JavaFX-приложение с централизованным сервером
 ---
 
 ## Структура проекта
-- картинка
+- <img width="374" height="590" alt="image" src="https://github.com/user-attachments/assets/44e34156-3c2e-48ca-a494-5e70318a947e" />
+
 
 
